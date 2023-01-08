@@ -7,4 +7,5 @@ INSERT INTO PUBLISHER VALUES('Tatamc','Bangalore','98234545');
 INSERT INTO PUBLISHER VALUES('Laxmi','Bangalore','99234545');
 INSERT INTO PUBLISHER VALUES('Roopao','India', '593291930');
 INSERT INTO PUBLISHER VALUES('Aavishkar','India','98565789');
-SELECT * FROM publisher;    
+SELECT * FROM publisher;  
+conn  
