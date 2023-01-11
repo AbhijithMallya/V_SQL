@@ -1,0 +1,1 @@
+int row = jTable1.getSelectedRow();

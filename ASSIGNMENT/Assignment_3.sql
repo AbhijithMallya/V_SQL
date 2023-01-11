@@ -95,3 +95,22 @@ A.AID=C.AID AND C.EID = AE.EID AND CRUISINGRANGE=1000 GROUP BY(C.AID,C.EID);
 SELECT AID FROM AIRCRAFT A
 WHERE CRUISINGRANGE > (SELECT MIN(DISTANCE) FROM FLIGHT F WHERE FRM='LOS ANGELES'AND TOO='CHICAGO');
 
+--6.Print the enames of pilots who can operate planes with cruising range greater than 3000 miles but are not certified on any Boeing aircraft
+SELECT DISTINCT(AE.ENAME) FROM AIRCRAFT A , AIRCRAFT_EMPLOYEE AE, CERTIFIED C WHERE
+A.AID=C.AID AND C.EID = AE.EID AND CRUISINGRANGE>3000 AND A.ANAME !='BOEING'; 
+
+--8.Print the name and salary of every nonpilot whose salary is more than the average salary for pilots.
+SELECT * FROM AIRCRAFT_EMPLOYEE WHERE ESALARY>(SELECT AVG(ESALARY) FROM AIRCRAFT_EMPLOYEE);
+
+--9. Print the names of employees who are certified only on aircrafts with cruisingrange longer than 1000 miles, but on at least two such aircrafts
+
+SELECT ENAME FROM AIRCRAFT A , AIRCRAFT_EMPLOYEE AE, CERTIFIED C WHERE
+A.AID=C.AID AND C.EID = AE.EID AND CRUISINGRANGE>1000
+GROUP BY(ENAME) HAVING COUNT(ENAME)>=2;
+--HAVING COUNT(ENAME)>=2
+
+
+--10.  Print the names of employees who are certified on all aircrafts
+SELECT AE.EID,ENAME FROM AIRCRAFT_EMPLOYEE AE,CERTIFIED C GROUP BY(AE.EID,ENAME);
+
+
